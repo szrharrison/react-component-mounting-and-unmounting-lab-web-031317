@@ -3,13 +3,16 @@ import React from 'react';
 export default class Pancake extends React.Component {
 
   // TODO: create a componentDidMount() which will start the interval to count how long the pancake has been cooking
-
+  componentDidMount() {
+    this.startInterval()
+  }
   // TODO: create a componentWillUnmount() which will clear the interval
+  componentWillUnmount() {
+    this.cleanUpInterval()
+  }
 
   updateCounter() {
-    this.setState({
-      timeCooked: this.state.timeCooked + 1
-    })
+    this.setState( state => ({ timeCooked: state.timeCooked + 1 }) )
   }
 
   startInterval() {
@@ -21,9 +24,7 @@ export default class Pancake extends React.Component {
   }
 
   flip() {
-    this.setState({
-      flippedAt: this.state.timeCooked
-    })
+    this.setState( state => ({ flippedAt: this.state.timeCooked }) )
   }
 
   getPancakeStatus() {
